@@ -58,7 +58,7 @@ CREATE TABLE pontos_mapa (
     descricao TEXT,
 
     FOREIGN KEY (tipo_id) REFERENCES tipos_pontos(id)
-);
+); 
 
 CREATE INDEX idx_pontos_localizacao ON pontos_mapa(latitude, longitude);
 
