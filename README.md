@@ -4,6 +4,7 @@ PlantMap é uma plataforma web que permite registrar e visualizar árvores plant
 Dica: Para as coordenadas de Manaus (latitude e longitude), o tipo REAL (números com vírgula/ponto) é o ideal para o GPS não dar erro.
 
 DER do Banco de Dados: basicamente um resumo de como está organizado o Banco de Dados.
+---------
 USUARIOS
 ---------
 id (PK)
