@@ -6,4 +6,4 @@ INSERT INTO tipos_pontos (nome) VALUES
                                     ('Recarga de Carro Elétrico'),
                                     ('Ponto de Plantio');
 
--- OBS: se precisarmos adicionar outros tipos no banco, apenas usaremos o "INSERT INTO tipos_ponto"
+-- OBS: se precisarmos adicionar outros tipos no banco, apenas usaremos o "INSERT INTO tipos_ponto" 
