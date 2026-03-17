@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@RestControler: Cria API REST
 @RestControler
+//@RequestMapping("/arvores"): Rota principal
 @RequestMapping("/arvore")
+//@Crossorigin: Permite HTML/JavaScript acesar a API
 @CrossOrigin
 public class ArvoreController {
 
