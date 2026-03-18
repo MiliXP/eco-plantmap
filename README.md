@@ -46,9 +46,6 @@ plantmap
 ├── backend
 ├── frontend
 ├── database
-│   ├── schema.sql
-│   └── seed.sql
-│
 └── README.md
 ```
 
