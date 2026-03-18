@@ -58,7 +58,7 @@ Este projeto foi desenvolvido com fins educacionais, visando aplicar conceitos d
 ## 💡 Possíveis Melhorias Futuras
 
 * Sistema de login e autenticação.
-* Acompanhamento do crescimento das árvores 🌱.
+* Acompanhamento do crescimento das árvores.
 * Gamificação (pontuação por ações sustentáveis).
 * Integração com APIs de mapas.
 
