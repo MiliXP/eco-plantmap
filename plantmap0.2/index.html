@@ -9,7 +9,7 @@
     
     <style>
         :root {
-            /* Paleta Profissional Natureza */
+            /* Paleta Natureza */
             --primary: #1b4332;       /* Verde Floresta Profundo */
             --primary-light: #2d6a4f;
             --accent: #74c69d;        /* Verde Broto */
@@ -334,7 +334,7 @@
             if (winnerRow) {
                 winnerRow.classList.add('top-1');
                 const nameCell = winnerRow.cells[1];
-                // Substituí o emoji por um ícone SVG mais elegante
+                // Substituí o emoji por um ícone SVG mais elegante (se quiser trocar tbm ode)
                 nameCell.innerHTML = `<div class="name-with-crown"><i data-lucide="crown" size="18"></i>${nameCell.innerText}</div>`;
                 lucide.createIcons(); // Recarrega ícones para o novo elemento
             }
