@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantMap | Gestão Ambiental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            /* Paleta Profissional Natureza */
+            --primary: #1b4332;       /* Verde Floresta Profundo */
+            --primary-light: #2d6a4f;
+            --accent: #74c69d;        /* Verde Broto */
+            --bg-body: #f8fafc;       /* Off-white levemente azulado */
+            --bg-card: #ffffff;
+            --text-main: #081c15;
+            --text-muted: #475569;
+            --gold: #d97706;
+            --soft-green: #ebf5ee;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(116, 198, 157, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(45, 106, 79, 0.05) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- HEADER ESTILIZADO --- */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1.5px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        header h1 i { color: var(--accent); }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* --- CARDS COM EFEITO GLASSMORPHISM --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(15, 214, 114, 0.192);
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -10px rgba(27, 67, 50, 0.1);
+        }
+
+        /* Detalhe de folha decorativa no card */
+        .stat-card::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: var(--soft-green);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .stat-card h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-card .number {
+            position: relative;
+            z-index: 1;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        /* --- RANKING PROFISSIONAL --- */
+        .ranking-container {
+            background: var(--bg-card);
+            border-radius: 32px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px -12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(75, 204, 75, 0.733);
+        }
+
+        .ranking-container h2 {
+            margin-bottom: 2rem;
+            font-size: 1.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        th {
+            padding: 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+
+        tbody tr {
+            background: #88ec882d;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        tbody tr:hover {
+            transform: scale(1.01);
+            background: var(--soft-green);
+        }
+
+        td { 
+            padding: 1.5rem; 
+            border-top: 1px solid #70e04e;
+            border-bottom: 1px solid #77bb0a;
+        }
+
+        td:first-child { 
+            border-left: 1px solid #3f93e7;
+            border-radius: 16px 0 0 16px; 
+        }
+        
+        td:last-child { 
+            border-right: 1px solid #58a7f5;
+            border-radius: 0 16px 16px 0; 
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .rank-badge {
+            background: #c8ffae;
+            color: var(--text-muted);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* --- DESTAQUE PARA O VENCEDOR --- */
+        .top-1 {
+            background: linear-gradient(90deg, #f0db89d2 0%, #daba51d0 100%) !important;
+        }
+
+        .top-1 td { border-color: #9e8006; }
+
+        .top-1 .rank-badge {
+            background: #ffd632;
+            color: var(--gold);
+        }
+
+        .name-with-crown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .name-with-crown i {
+            color: var(--gold);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            th:nth-child(3), td:nth-child(3) { display: none; }
+            .ranking-container { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1><i data-lucide="sprout"></i> PlantMap</h1>
+            <p>Monitoramento Ecológico de Alto Impacto</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3><i data-lucide="leaf"></i> Total de Mudas</h3>
+                <div class="number">14.852</div>
+            </div>
+            <div class="stat-card">
+                <h3><i data-lucide="map"></i> Área Reflorestada</h3>
+                <div class="number">12.4 <span style="font-size: 1rem; color: var(--text-muted); margin-left: 5px;">ha</span></div>
+            </div>
+            <div class="stat-card">
+                <h3><i data-lucide="users"></i> Participantes</h3>
+                <div class="number">84</div>
+            </div>
+        </section>
+
+        <section class="ranking-container">
+            <h2><i data-lucide="trophy"></i> Líderes de Reflorestamento</h2>
+            <table id="rankingTable">
+                <thead>
+                    <tr>
+                        <th>Class.</th>
+                        <th>Usu.</th>
+                        <th>Região</th>
+                        <th>Qtd. Plantada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge">1</span></td>
+                        <td>Walter</td>
+                        <td>Zona Leste</td>
+                        <td>1.420</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">2</span></td>
+                        <td>Henrique</td>
+                        <td>Zona Sul</td>
+                        <td>985</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">3</span></td>
+                        <td>Lucas Mesquita</td>
+                        <td>Zona Norte</td>
+                        <td>870</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">4</span></td>
+                        <td>Leonardo</td>
+                        <td>Zona Oeste</td>
+                        <td>642</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">5</span></td>
+                        <td>Pedro Henrique</td>
+                        <td>Centro Oeste</td>
+                        <td>8.200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        // Inicializa os ícones Lucide
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('#rankingTable tbody tr');
+            let highestValue = -1;
+            let winnerRow = null;
+
+            rows.forEach(row => {
+                const value = parseInt(row.cells[3].innerText.replace('.', ''));
+                if (value > highestValue) {
+                    highestValue = value;
+                    winnerRow = row;
+                }
+            });
+
+            if (winnerRow) {
+                winnerRow.classList.add('top-1');
+                const nameCell = winnerRow.cells[1];
+                // Substituí o emoji por um ícone SVG mais elegante
+                nameCell.innerHTML = `<div class="name-with-crown"><i data-lucide="crown" size="18"></i>${nameCell.innerText}</div>`;
+                lucide.createIcons(); // Recarrega ícones para o novo elemento
+            }
+        });
+    </script>
+</body>
+</html>
