@@ -1,0 +1,112 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 60px auto;
+}
+    /* cor do nome plantMap */
+header h1 {
+    color: #405138;
+    font-size: 2.5rem;
+}
+   /* cor da descrição abaixo do plantMap */
+header p {
+    color: #405138;
+    margin-bottom: 40px;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+  /* cor do bloco de Total de mudas...*/ 
+.card {
+    background: rgba(EDF1D6, 240, 90, 0.301);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgb(137, 231, 141);
+}
+
+     /* cor das letras */
+.card h3 {
+    color: #405138;
+    margin-bottom: 10px;
+}
+
+     /* cor dos numeros das info. dentro dos cards */
+.number {
+    font-size: 2rem;
+    color: #405138;
+    font-weight: bold;
+}
+.card.area-reflorestada {
+    background: rgb(237,241,214);
+}
+  
+/* ranking de plantação  */
+
+.ranking {
+    margin-top: 50px;
+}
+   /* cor do título Ranking de Plantações */
+.ranking h2 {
+    margin-bottom: 20px;
+    color: #405138;
+}
+    /* estilo da tabela de ranking */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(151, 219, 157, 0.301);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+   /* cor do cabeçalho da tabela */
+th {
+    background-color: #609966;
+    color: white;
+}
+
+   /* cor das linhas pares da tabela */
+     tr:nth-child(even) {
+    background-color: #9dc08852;
+}
+
+
+     tr:hover {
+    background-color: #edf1f6;
+}
+   
+ 
+/* LINHA DO PRIMEIRO LUGAR */
+
+.primeiro {
+      background: rgba(255, 248, 220);
+      padding: 20px;
+      border-radius: 8%;
+      width: 100%;
+      box-shadow: 0 5px 15px rgb(255, 228, 117);
+}
+
+/* TEXTO DOURADO */
+.primeiro td {
+    color: #926b09;
+}
+
+/* COROA */
+.primeiro td:first-child::before {
+    content: "👑 ";
+}
