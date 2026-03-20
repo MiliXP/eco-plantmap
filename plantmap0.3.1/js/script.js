@@ -13,14 +13,16 @@ function ordenarRanking() {
     tabela.innerHTML = "";
 
     linhas.forEach((linha, index) => {
+        linha.classList.remove("primeiro");
+
         linha.children[0].textContent = index + 1;
 
         if (index === 0) {
-            linha.classList.add("primeiro");
-        }
+        linha.classList.add("primeiro");
+    }
 
-        tabela.appendChild(linha);
-    });
+    tabela.appendChild(linha);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", ordenarRanking);
