@@ -1,0 +1,234 @@
+/* 1. BASE E LAYOUT GLOBAL */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #E8F3E8;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 60px auto;
+    align-items: center;
+    padding: 0 20px;
+    }
+
+   /* 2. HEADER E ELEMENTOS DE NAVEGAÇÃO */
+   header {
+    position: relative;
+   }
+
+    header h1 {
+         color: #135f13;
+         font-size: 2.5rem;
+     }
+
+    header p {
+    color: #405138;
+    margin-bottom: 40px;
+    }
+
+    #btnMapa {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #609966;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    }
+
+    #btnMapa:hover {
+    background-color: #405138;
+    }
+
+                     /* 3. COMPONENTE: CARDS */
+     .cards {
+         display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .card {
+    width: 100%;
+    border-radius: 12px;
+    background: #D5E8D4;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 20px; /* Adicionado para não colar no conteúdo */
+    }
+
+    .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+      .card.area-reflorestada {
+       background: rgb(197, 224, 180);
+    }
+
+.number {
+    font-size: 2rem;
+    color: #405138;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card:hover .number {
+    transform: scale(1.05);
+}
+
+/* 4. COMPONENTE: RANKING E TABELA */
+.ranking {
+    margin-top: 50px;
+}
+
+.ranking h2 {
+    margin-bottom: 20px;
+    color: #2F4F4F;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(151, 219, 157, 0.301);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+   th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+   th {
+    background-color: #609966;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #9dc08852;
+}
+
+tr:hover {
+    background-color: #C5E0B4;
+    box-shadow: 0 5px 15px rgb(132, 150, 110);
+}
+
+/* Estados do Ranking (Primeiro lugar e indicadores) */
+.primeiro {
+    background: rgba(235, 195, 34, 0.253);
+    box-shadow: 0 5px 15px rgb(255, 228, 117);
+}
+
+.primeiro td {
+    color: #926b09;
+}
+
+.primeiro td:first-child::before {
+    content: "👑 ";
+}
+
+.seta {
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.subiu { color: green; }
+.desceu { color: red; }
+.igual { color: gray; }
+
+/*5. RESPONSIVIDADE   */
+
+/* Telas Pequenas (Celulares) */
+@media (max-width: 575.98px) {
+    body { padding: 10px; }
+    .container { margin: 30px auto; }
+    header h1 { font-size: 1.7rem; }
+    header p { font-size: 0.9rem; }
+    
+    .cards { flex-direction: column; }
+    .card { padding: 15px; }
+    .number { font-size: 2rem; }
+    
+    table { font-size: 0.9rem; }
+    th, td { padding: 10px; }
+
+    #btnMapa {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        width: 90%;
+    }
+}
+
+/* Tablets */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    header h1 { font-size: 2rem; }
+}
+
+/* Desktops Médios */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container { max-width: 950px; }
+    .number { font-size: 2.5rem; }
+}
+
+/* Desktops Grandes */
+@media (min-width: 1200px) {
+    .container { max-width: 1200px; }
+    .card { padding: 30px; }
+    .number { font-size: 3rem; }
+    header h1 { font-size: 3rem; }
+}
+
+/* =========================
+   MAPA
+========================= */
+
+/* Container geral do mapa */
+.mapa-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Título do mapa */
+.mapa-container h2 {
+    color: #405138;
+    margin-bottom: 20px;
+}
+
+/* Área onde o mapa fica */
+.mapa {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #9dc088;
+}
+
+/* Caso use iframe (Google Maps, por exemplo) */
+.mapa iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Efeito hover leve */
+.mapa:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
