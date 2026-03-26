@@ -1,0 +1,202 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantMap</title>
+
+    <!-- LINK DO CSS (ESSENCIAL) -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/mapa.css">
+
+    <style>
+        /* =========================
+           BOTÃO MAPA */
+
+        #btnMapa {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            background: linear-gradient(135deg, #1b7925, #405138);
+            color: white;
+
+            border: none;
+            border-radius: 30px;
+
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 500;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* =========================
+           BOTÃO DARK */
+
+        #toggleDark {
+            position: fixed;
+            top: 20px;
+            right: 200px;
+
+            background: #333;
+            color: white;
+
+            border: none;
+            border-radius: 50%;
+
+            width: 45px;
+            height: 45px;
+
+            cursor: pointer;
+            font-size: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* =========================
+           MOBILE */
+
+        @media (max-width: 600px) {
+
+            /* MAPA vira bolinha */
+            #btnMapa {
+                width: 55px;
+                height: 55px;
+
+                padding: 0;
+                border-radius: 50%;
+
+                justify-content: center;
+            }
+
+            /* esconde texto */
+            #btnMapa .texto {
+                display: none;
+            }
+
+            /* ícone */
+            #btnMapa .icone {
+                font-size: 20px;
+            }
+
+            /* DARK desce um pouco */
+            #toggleDark {
+                top: 90px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+  
+<body>
+
+    <!-- BOTÃO MAPA -->
+    <button id="btnMapa">
+        <span class="texto">Voltar para o Mapa</span>
+    </button>
+
+    <!-- BOTÃO DARK MODE -->
+    <button id="toggleDark">🌙</button>
+
+    <div class="container">
+
+        <header>
+            <h1 class="logo">
+                <span>Plant</span>Map
+            </h1>
+        </header>
+
+        <section class="cards">
+            <div class="card">
+                <h1>🌱 Total de Mudas</h1>
+                <p class="number">14.852</p>
+            </div>
+
+            <div class="card area-reflorestada">
+                <h1>🌳 Área Reflorestada</h1>
+                <p class="number">1200 m²</p>
+            </div>
+
+            <div class="card">
+                <h1>👥 Participantes</h1>
+                <p class="number">84</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- RANKING -->
+    <section class="ranking">
+        <h2>Ranking de Plantio</h2> 
+
+        <table id="tabela-ranking">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Região</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Walter</td>
+                    <td>Zona Leste</td>
+                    <td class="quantidade"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Henrique</td>
+                    <td>Zona Sul</td>
+                    <td class="quantidade">985</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Lucas</td>
+                    <td>Zona Norte</td>
+                    <td class="quantidade">870</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Henrique</td>
+                    <td>Zona Sul</td>
+                    <td class="quantidade">985</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Pedro</td>
+                    <td>Zona Norte</td>
+                    <td class="quantidade">98888</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Henrique</td>
+                    <td>Zona Sul</td>
+                    <td class="quantidade">985</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Lucas</td>
+                    <td>Zona Norte</td>
+                    <td class="quantidade">755555</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- SCRIPT -->
+    <script src="JS/script.js"></script>
+
+</body>
+</html>
