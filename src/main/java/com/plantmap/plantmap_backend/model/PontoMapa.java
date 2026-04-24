@@ -5,28 +5,28 @@ package com.plantmap.model;
 import jakarta.persistence.*;
 //@Entity: diz ao Spring Boot que isso é uma tabela no banco de dados (BD)
 @Entity
-public class arvore {
+public class PontoMapa {
     //@Id: Chave primario
     @id
     //@GeneratedValue: o banco cria o ID automaticamente
     @GeneratedValue(strategy = GenerationType.INDENTITY)
     private ling id;
 
-    private String usuario;
+    private String nome;
     private String tipo;
     private double latitude;
     private double longitude;
-    private String data;
+    private String descricao;
 
-    public arvore() {}
+    public PontoMapa() {}
     public Long getID() {
         return id;
     }
-    public String getUsuario() {
-        return usuario;
+    public String getNome() {
+        return nome;
     }
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     public String getTipo() {
         return tipo;
@@ -46,10 +46,10 @@ public class arvore {
     public void setLogitude(double longitude) {
         this.longitude = longitude;
     }
-    public String getData() {
-        return data;
+    public String getDescricao() {
+        return descricao;
     }
-    public void setData(String data) {
-        this.data = data;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
