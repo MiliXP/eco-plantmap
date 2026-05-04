@@ -1,0 +1,351 @@
+/* ============================================================
+   1. CONFIGURAÇÕES BASE (ROOT)
+============================================================ */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #E8F3E8 0%, #446836 300%);
+    text-align: center;
+    padding-top: 0px; /* Evita que botões fixos cubram o conteúdo */
+    transition: background 0.3s ease;
+}
+
+.container { 
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+   2. CABEÇALHO (HEADER)
+============================================================ */
+header h1 {
+    color: #135f13;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #405138;
+    margin-bottom: -5px;
+}
+
+.info {
+    font-weight: bold;
+} 
+
+.logo {
+    display: flex;
+    align-items: center; /* alinha verticalmente */
+    justify-content: center; /* centraliza tudo */
+    gap: 10px; /* espaço entre imagem e texto */
+}
+
+.logo-img {
+    width: 900px; /* ajuste como quiser */
+    margin-bottom: -250px;
+    margin-top: -300px;
+}   
+
+/* ============================================================
+   3. COMPONENTES: CARDS
+============================================================ */
+/* Container que segura todos os cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Estilo Base do Card */
+.card {
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+    height: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #609966; /* Cor de fundo base */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Imagem de Fundo */
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35; /* Menos opacidade = texto mais legível */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Conteúdo do Texto */
+.card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff; /* Garante que tudo dentro seja branco */
+}
+
+.card-content h1 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* O NUMERÃO */
+.number {
+    display: block;
+    font-size: 3rem; /* Aumentei para dar destaque */
+    color: #ffffff !important; /* Branco obrigatório para não bugar */
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.number-reflorestamento {
+    display: block;
+    font-size: 3rem; /* Aumentei para dar destaque */
+    color: #ffffff !important; /* Branco obrigatório para não bugar */
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Hover Global */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(11, 126, 20, 0.4);
+}
+
+.card:hover .number {
+    transform: scale(1.1); /* O número cresce suavemente */
+}
+
+.card:hover .number-reflorestamento {
+    transform: scale(1.1); /* O número cresce suavemente */
+}
+
+/* Estilo específico para o card do meio (opcional) */
+.card.area-reflorestada {
+    background-color: #9DC08B; 
+}
+
+/* ============================================================
+   4,5. GRAFICO MENSAL DE MUDAS
+============================================================ */
+
+.chart-container {
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+
+.chart-svg {
+    width: 100%;
+    height: 55px; /* Ajuste a altura do gráfico aqui */
+    display: block;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 0 5px;
+}
+
+.chart-labels span {
+    font-size: 1.20rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: lowercase;
+}
+
+/* Animação opcional: faz a linha "aparecer" */
+.chart-svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease forwards;
+}
+
+@keyframes draw {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ============================================================
+   4. COMPONENTES: TABELA DE RANKING
+============================================================ */
+.ranking {
+    margin-top: 50px;
+}
+
+.ranking h2 {
+    margin-bottom: 20px;
+    color: #0b6606;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(151, 219, 157, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #609966;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #40714e52;
+}
+
+tr:hover {
+    background-color: #C5E0B4;
+    box-shadow: 0 5px 15px rgb(132, 150, 110);
+}
+
+/* Destaque 1º Lugar */
+.primeiro {
+    background: rgba(255, 204, 2, 0.844) !important;
+    box-shadow: 0 5px 15px rgb(240, 210, 90);
+}
+
+.primeiro td {
+    color: #926b09;
+    font-weight: bold;
+}
+
+.primeiro td:first-child::before {
+    content: "👑 ";
+}
+
+/* Indicadores de Status (Setas) */
+.seta { margin-left: 8px; font-weight: bold; }
+.subiu { color: green; }
+.desceu { color: red; }
+.igual { color: gray; }
+
+/* ============================================================
+   5. CONTROLES (BOTÕES FIXOS)
+============================================================ */
+.controles-fixos {
+
+    top: 20px;
+    left: 20px;   /* Margem da esquerda */
+    right: 20px;  /* Margem da direita */
+    z-index: 1000;
+    
+    display: flex;
+    /* Esta linha empurra o primeiro botão para a esquerda 
+       e o segundo para a direita */
+    justify-content: space-between; 
+    align-items: center;
+    
+    /* Importante para não bloquear cliques em elementos que 
+       possam estar no centro da tela, "atrás" do nav */
+    pointer-events: none; 
+}
+
+/* Estilos individuais dos botões */
+.controles-fixos button {
+    pointer-events: auto; /* Devolve o clique para os botões */
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#btnMapa {
+    background-color: #609966;
+    color: white;
+}
+
+#toggleDark {
+    background: #1b4332;
+    color: white;
+    padding: 10px 14px; /* Ajuste leve para o ícone da lua */
+}
+
+.controles-fixos button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* ============================================================
+   6. MODO ESCURO (DARK MODE)
+============================================================ */
+body.dark {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark header h1 { color: #4ade80; }
+body.dark header p { color: #94a3b8; }
+
+body.dark .card {
+    background: #1e293b;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+body.dark .number { color: #facc15; }
+
+body.dark table { background: #1e293b; }
+body.dark th { background-color: #334155; }
+body.dark tr:nth-child(even) { background-color: #1e293b; }
+body.dark tr:hover { background-color: #334155; }
+
+/* ============================================================
+   7. RESPONSIVIDADE (MEDIA QUERIES)
+============================================================ */
+
+/* CELULAR */
+@media (max-width: 575.98px) {
+    body { padding: 10px; }
+    .container { margin: 30px auto; }
+    header h1 { font-size: 1.7rem; }
+    
+    .cards { flex-direction: column; }
+    
+    #btnMapa, #btnVoltar, #toggleDark {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        width: 90%;
+    }
+}
+
+/* TABLET */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .cards { flex-direction: column; gap: 15px; }
+    header h1 { font-size: 2rem; }
+}
+
+/* DESKTOP MÉDIO */
+@media (min-width: 998px) {
+    .container { max-width: 1100px; }
+    .number { font-size: 2.5rem; }
+}
+
+/* DESKTOP GRANDE */
+@media (min-width: 1200px) {
+    .container { max-width: 1200px; }
+    .card { padding: 30px; }
+    .number { font-size: 3rem; }
+}
