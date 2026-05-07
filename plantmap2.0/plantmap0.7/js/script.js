@@ -1,4 +1,25 @@
 /* ============================================================
+   MODO ESCURO DA TELA INICIAL
+============================================================ */
+function gerenciarDarkMode() {
+    const toggle = document.getElementById("toggleDark");
+    if (!toggle) return;
+
+    // Evento de clique para alternar
+    toggle.addEventListener("click", () => {
+        const isDark = document.body.classList.toggle("dark");
+        
+        // Salva a escolha do usuário
+        localStorage.setItem("darkMode", isDark ? "ativo" : "inativo");
+        
+        // Atualiza o ícone do botão
+        toggle.textContent = isDark ? "☀️" : "🌙"; 
+    });
+}
+
+gerenciarDarkMode();
+
+/* ============================================================
    TOKEN MAPBOX
 ============================================================ */
 

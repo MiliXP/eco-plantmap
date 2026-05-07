@@ -99,7 +99,7 @@ body.dark {
 
     padding: 28px;
 
-    background: #d8ecff5b;
+    background: #d8e9da;
 
     border-radius: 24px;
 
@@ -252,7 +252,7 @@ body.dark .titulo-ponto {
     width: 40px;
     height: 40px;
 
-    background: #980000;
+    background: #075524;
 
     border-radius: 50%;
 
@@ -269,7 +269,7 @@ body.dark .titulo-ponto {
 
 body.dark .linha-info {
 
-    color: #e2e8f0;
+    color: #ffffff;
 }
 
 /* ============================================================
@@ -325,7 +325,7 @@ body.dark .linha-info {
 
     padding: 28px 20px;
 
-    background: white;
+    background: rgb(113, 164, 125);
 
     border-radius: 18px;
 
@@ -349,7 +349,7 @@ body.dark .linha-info {
 
     font-size: 0.9rem;
 
-    color: #405138;
+    color: #ffffff;
 
     margin-bottom: 10px;
 }
@@ -358,7 +358,7 @@ body.dark .linha-info {
 
     font-size: 1.5rem;
 
-    color: #135f13;
+    color: #f4fdf4;
 }
 
 body.dark .info-box {
