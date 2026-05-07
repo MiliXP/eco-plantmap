@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoMap Manaus</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/mapa.css">
+
+    <!-- LEAFLET CSS -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <style>
+
+        /* ============================================================
+           ESTILOS DOS BOTÕES
+        ============================================================ */
+
+        #btnVoltar {
+
+            position: relative;
+            top: 25px;
+            right: -25px;
+
+            background: linear-gradient(135deg, #1b7925, #405138);
+
+            color: white;
+
+            border: none;
+            border-radius: 30px;
+
+            padding: 12px 20px;
+
+            cursor: pointer;
+
+            font-weight: 500;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+            transition: 0.3s;
+        }
+
+        #btnVoltar:hover {
+
+            transform: translateY(-2px);
+        }
+
+        #toggleDark {
+
+            position: relative;
+
+            top: 20px;
+            right: 20px;
+
+            background: #333;
+            color: white;
+
+            border: none;
+            border-radius: 50%;
+
+            width: 45px;
+            height: 45px;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+            transition: 0.3s;
+        }
+
+        #toggleDark:hover {
+
+            transform: scale(1.05);
+        }
+
+        /* ============================================================
+           CONTEÚDO MAPA
+        ============================================================ */
+
+        .conteudo-mapa {
+
+            display: grid;
+
+            grid-template-columns: 340px 1fr;
+
+            gap: 25px;
+
+            margin-top: 25px;
+        }
+
+        /* ============================================================
+           GUIA DOS PONTOS
+        ============================================================ */
+
+        .painel-pontos {
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 18px;
+
+            max-height: 550px;
+
+            overflow-y: auto;
+
+            padding-right: 5px;
+        }
+
+        .card-ponto {
+
+            background: #f5f5f5;
+
+            border-radius: 24px;
+
+            padding: 18px;
+
+            border: 2px solid #d8d8d8;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        .card-ponto:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+
+        .titulo-ponto {
+
+            background: white;
+
+            border-radius: 40px;
+
+            padding: 12px 18px;
+
+            display: inline-block;
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+            margin-bottom: 16px;
+
+            border: 1px solid #d0d0d0;
+        }
+
+        .conteudo-ponto {
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 16px;
+        }
+
+        .linha-info {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 12px;
+        }
+
+        .icone-info {
+
+            width: 40px;
+            height: 40px;
+
+            background: #980000;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            font-size: 18px;
+
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           MAPA
+        ============================================================ */
+
+        #mapa {
+
+            width: 100%;
+            height: 550px;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .leaflet-container {
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .leaflet-popup-content {
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           RESPONSIVIDADE
+        ============================================================ */
+
+        @media (max-width: 900px) {
+
+            .conteudo-mapa {
+
+                grid-template-columns: 1fr;
+            }
+
+            .painel-pontos {
+
+                max-height: unset;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            #mapa {
+
+                height: 430px;
+            }
+
+            #btnVoltar {
+
+                width: 50px;
+                height: 50px;
+
+                padding: 0;
+
+                border-radius: 50%;
+
+                justify-content: center;
+
+                right: 80px;
+
+                margin-top: -30px;
+            }
+
+            #btnVoltar .texto {
+
+                display: none;
+            }
+
+            #btnVoltar .icone {
+
+                font-size: 20px;
+            }
+
+            #toggleDark {
+
+                right: -60px;
+                top: 4px;
+            }
+
+            .titulo-ponto {
+
+                font-size: 15px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="controles-fixos">
+
+        <button id="btnVoltar" title="Voltar para o Ranking">
+
+            <span class="icone">⬅</span>
+            <span class="texto">Ir para o Ranking</span>
+
+        </button>
+
+        <button id="toggleDark" title="Alternar Modo Escuro">
+
+            🌙
+
+        </button>
+
+    </nav>
+
+    <div class="container">
+
+        <header class="main-header">
+
+            <h1><span>Eco</span>Map</h1>
+
+            <p>
+                Mapa inteligente de descarte consciente em Manaus
+            </p>
+
+        </header>
+
+        <main class="mapa-container">
+
+            <article class="mapa-card">
+
+                <header class="mapa-header">
+
+                    <h2>♻ Mapa de Reciclagem</h2>
+
+                    <p>
+                        Encontre pontos de coleta seletiva,
+                        descarte eletrônico e reciclagem em Manaus
+                    </p>
+
+                </header>
+
+                <div class="conteudo-mapa">
+
+                    <!-- GUIA -->
+                    <div class="painel-pontos">
+
+                        <!-- AMAZONAS SHOPPING -->
+                        <div class="card-ponto"
+                             data-lat="-3.1022"
+                             data-lng="-60.0250"
+                             data-marker="amazonas">
+
+                            <div class="titulo-ponto">
+                                AMAZONAS SHOPPING
+                            </div>
+
+                            <div class="conteudo-ponto">
+
+                                <div class="linha-info">
+
+                                    <span class="icone-info">📍</span>
+
+                                    <div>
+
+                                        <strong>ENDEREÇO</strong><br>
+
+                                        Av. Djalma Batista, 482<br>
+                                        Chapada - Manaus/AM
+
+                                    </div>
+
+                                </div>
+
+                                <div class="linha-info">
+
+                                    <span class="icone-info">♻</span>
+
+                                    <div>
+
+                                        <strong>COLETA</strong><br>
+
+                                        Eletrônicos, pilhas
+                                        e recicláveis
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- BEMOL -->
+                        <div class="card-ponto"
+                             data-lat="-3.0415"
+                             data-lng="-59.9580"
+                             data-marker="bemol">
+
+                            <div class="titulo-ponto">
+                                BEMOL GRANDE CIRCULAR
+                            </div>
+
+                            <div class="conteudo-ponto">
+
+                                <div class="linha-info">
+
+                                    <span class="icone-info">📍</span>
+
+                                    <div>
+
+                                        <strong>ENDEREÇO</strong><br>
+
+                                        Av. Autaz Mirim, 6100<br>
+                                        Manaus/AM
+
+                                    </div>
+
+                                </div>
+
+                                <div class="linha-info">
+
+                                    <span class="icone-info">💻</span>
+
+                                    <div>
+
+                                        <strong>COLETA</strong><br>
+
+                                        Celulares, teclados,
+                                        mouses e eletrônicos
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- SEMULSP -->
+                        <div class="card-ponto"
+                             data-lat="-3.1038"
+                             data-lng="-60.0715"
+                             data-marker="semulsp">
+
+                            <div class="titulo-ponto">
+                                SEMULSP - COMPENSA
+                            </div>
+
+                            <div class="conteudo-ponto">
+
+                                <div class="linha-info">
+
+                                    <span class="icone-info">📍</span>
+
+                                    <div>
+
+                                        <strong>ENDEREÇO</strong><br>
+
+                                        Av. Compensa, 1335<br>
+                                        Compensa - Manaus/AM
+
+                                    </div>
+
+                                </div>
+
+                                <div class="linha-info">
+
+                                    <span class="icone-info">🏠</span>
+
+                                    <div>
+
+                                        <strong>COLETA</strong><br>
+
+                                        Linha branca
+                                        e grandes volumes
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MAPA -->
+                    <div id="mapa"></div>
+
+                </div>
+
+                <!-- INFORMAÇÕES -->
+                <footer class="mapa-info">
+
+                    <div class="info-box">
+
+                        <span>♻ Pontos</span>
+                        <strong>15+ Locais</strong>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <span>📍 Cidade</span>
+                        <strong>Manaus</strong>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <span>🌎 Cobertura</span>
+                        <strong>Zonas Urbanas</strong>
+
+                    </div>
+
+                </footer>
+
+            </article>
+
+        </main>
+
+    </div>
+
+    <!-- LEAFLET JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+
+        /* ============================================================
+           BOTÃO VOLTAR
+        ============================================================ */
+
+        document.getElementById("btnVoltar")
+        .addEventListener("click", () => {
+
+            window.location.href = "index.html";
+
+        });
+
+        /* ============================================================
+           DARK MODE
+        ============================================================ */
+
+        const toggle = document.getElementById("toggleDark");
+
+        toggle.addEventListener("click", () => {
+
+            document.body.classList.toggle("dark");
+
+            toggle.textContent =
+                document.body.classList.contains("dark")
+                ? "☀️"
+                : "🌙";
+
+        });
+
+        /* ============================================================
+           MAPA
+        ============================================================ */
+
+        const mapa = L.map('mapa')
+        .setView([-3.1190, -60.0217], 11);
+
+        /* ============================================================
+           OPEN STREET MAP
+        ============================================================ */
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+
+            attribution: '&copy; OpenStreetMap',
+            maxZoom: 19
+
+        }).addTo(mapa);
+
+        /* ============================================================
+           ÍCONE PERSONALIZADO
+        ============================================================ */
+
+        const iconeEletronico = L.icon({
+
+            iconUrl:
+            'https://cdn-icons-png.flaticon.com/512/1048/1048953.png',
+
+            iconSize: [35, 35]
+
+        });
+
+        /* ============================================================
+           MARCADORES
+        ============================================================ */
+
+        const marcadorAmazonas = L.marker(
+            [-3.1022, -60.0250],
+            {
+                icon: iconeEletronico
+            }
+        ).addTo(mapa)
+        .bindPopup(`
+            <strong>🛍 Amazonas Shopping</strong><br><br>
+
+            📍 Av. Djalma Batista, 482<br>
+            Chapada - Manaus/AM<br><br>
+
+            ♻ Recebimento de recicláveis
+            e eletrônicos portáteis.
+        `);
+
+        const marcadorBemol = L.marker(
+            [-3.0415, -59.9580],
+            {
+                icon: iconeEletronico
+            }
+        ).addTo(mapa)
+        .bindPopup(`
+            <strong>💻 Bemol Grande Circular</strong><br><br>
+
+            📍 Av. Autaz Mirim, 6100<br>
+            Manaus/AM<br><br>
+
+            ♻ Coleta de celulares,
+            teclados e eletrônicos.
+        `);
+
+        const marcadorSemulsp = L.marker(
+            [-3.1038, -60.0715]
+        )
+        .addTo(mapa)
+        .bindPopup(`
+            <strong>🏢 SEMULSP - Compensa</strong><br><br>
+
+            📍 Av. Compensa, 1335<br>
+            Compensa - Manaus/AM<br>
+            CEP: 69036-115<br><br>
+
+            ♻ Descarte de grandes volumes,
+            linha branca e resíduos recicláveis.
+        `);
+
+        /* ============================================================
+           ÁREA DE COBERTURA
+        ============================================================ */
+
+        L.circle([-3.1190, -60.0217], {
+
+            color: '#1b7925',
+
+            fillColor: '#2ecc71',
+
+            fillOpacity: 0.10,
+
+            radius: 8500
+
+        }).addTo(mapa)
+        .bindPopup("🌎 Área monitorada pelo EcoMap Manaus");
+
+        /* ============================================================
+           REDIRECIONAMENTO DOS CARDS
+        ============================================================ */
+
+        const cards = document.querySelectorAll(".card-ponto");
+
+        cards.forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                const latitude =
+                    parseFloat(card.dataset.lat);
+
+                const longitude =
+                    parseFloat(card.dataset.lng);
+
+                const marker =
+                    card.dataset.marker;
+
+                mapa.flyTo(
+                    [latitude, longitude],
+                    16,
+                    {
+                        duration: 2
+                    }
+                );
+
+                if (marker === "amazonas") {
+
+                    marcadorAmazonas.openPopup();
+                }
+
+                else if (marker === "bemol") {
+
+                    marcadorBemol.openPopup();
+                }
+
+                else if (marker === "semulsp") {
+s
+                    marcadorSemulsp.openPopup();
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
