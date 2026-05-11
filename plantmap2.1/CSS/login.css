@@ -1,0 +1,345 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body{
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ecfdf5,
+        #f0fdf4,
+        #eff6ff
+    );
+}
+
+/* FUNDO */
+.background{
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+    radial-gradient(circle at top left, #22c55e22, transparent 30%),
+    radial-gradient(circle at bottom right, #2563eb22, transparent 30%);
+
+    z-index: -1;
+}
+
+/* CONTAINER */
+.container{
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* CARD LOGIN */
+.login-card{
+
+    width: 480px;
+
+    padding: 40px;
+
+    background: rgba(255,255,255,0.85);
+
+    backdrop-filter: blur(12px);
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.08);
+
+    animation: aparecer 0.6s ease;
+
+    transition: 0.3s;
+}
+
+.login-card:hover{
+
+    transform: translateY(-3px);
+}
+
+/* LOGO */
+.logo{
+
+    width: 80px;
+    height: 80px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+
+    margin-bottom: 25px;
+
+    box-shadow:
+    0 10px 20px rgba(34,197,94,0.25);
+}
+
+.logo i{
+
+    font-size: 30px;
+
+    color: white;
+}
+
+/* TÍTULO */
+.login-card h1{
+
+    text-align: center;
+
+    font-size: 48px;
+
+    color: #0f172a;
+
+    margin-bottom: 12px;
+}
+
+.login-card p{
+
+    text-align: center;
+
+    color: #64748b;
+
+    margin-bottom: 35px;
+
+    font-size: 18px;
+}
+
+/* INPUTS */
+.input-group{
+
+    position: relative;
+
+    margin-bottom: 22px;
+
+    transition: 0.3s;
+}
+
+.input-group input{
+
+    width: 100%;
+
+    height: 60px;
+
+    border-radius: 40px;
+
+    border: 2px solid #dbe1e7;
+
+    outline: none;
+
+    padding: 0 25px 0 55px;
+
+    font-size: 16px;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #0f172a;
+
+    transition: 0.3s;
+}
+
+.input-group input::placeholder{
+
+    color: #94a3b8;
+}
+
+.input-group input:focus{
+
+    border: 2px solid #16a34a;
+
+    box-shadow:
+    0 0 15px rgba(34,197,94,0.15);
+}
+
+/* ÍCONES */
+.input-group i{
+
+    position: absolute;
+
+    left: 22px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.input-group input:focus + i{
+    color: #16a34a;
+}
+
+/* REMOVE LABEL */
+.input-group label{
+    display: none;
+}
+
+/* LINK */
+.extra{
+
+    margin-bottom: 22px;
+
+    text-align: right;
+}
+
+.extra a{
+
+    text-decoration: none;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.extra a:hover{
+
+    color: #16a34a;
+
+    text-decoration: underline;
+}
+
+/* BOTÃO */
+button{
+
+    width: 100%;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow:
+    0 10px 20px rgba(34,197,94,0.18);
+}
+
+button:hover{
+
+    background:
+    linear-gradient(
+        135deg,
+        #15803d,
+        #16a34a
+    );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+    0 12px 24px rgba(34,197,94,0.25);
+}
+
+/* ANIMAÇÃO */
+@keyframes aparecer{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateY(25px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+/* RESPONSIVO */
+@media(max-width: 550px){
+
+    .login-card{
+
+        width: 100%;
+
+        padding: 30px 22px;
+    }
+
+    .login-card h1{
+        font-size: 38px;
+    }
+
+    .login-card p{
+        font-size: 16px;
+    }
+
+    .logo{
+
+        width: 70px;
+        height: 70px;
+    }
+
+    .logo i{
+        font-size: 25px;
+    }
+
+    button{
+        font-size: 20px;
+    }
+
+}

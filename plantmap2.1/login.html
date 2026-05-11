@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Startup</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/mapa.css">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- FUNDO -->
+    <div class="background"></div>
+
+    <!-- CONTAINER -->
+    <main class="container">
+
+        <!-- CARD LOGIN -->
+        <div class="login-card">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+
+            <!-- TÍTULO -->
+            <h1>Bem-vindo</h1>
+            <p>Faça login para continuar</p>
+
+            <!-- FORMULÁRIO -->
+            <form id="loginForm">
+
+                <!-- CAMPO EMAIL -->
+                <div class="input-group">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="E-mail"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <!-- CAMPO SENHA -->
+                <div class="input-group">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Senha"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+                <!-- LINK -->
+                <div class="extra">
+                    <a href="#">
+                        Esqueci minha senha
+                    </a>
+                </div>
+
+                <!-- BOTÃO -->
+                <button type="submit">
+                    ENTRAR
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <!-- SCRIPT -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
