@@ -15,82 +15,18 @@ body.dark {
 }
 
 /* ============================================================
-   2. CONTROLES GLOBAIS (BOTÕES FIXOS)
-============================================================ */
-
-#btnVoltar {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-
-    padding: 12px 18px;
-
-    background: linear-gradient(135deg, #1b7925, #405138);
-    color: white;
-
-    border: none;
-    border-radius: 14px;
-
-    font-size: 0.9rem;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-
-    transition: 0.3s;
-}
-
-#btnVoltar:hover {
-    transform: translateY(-2px);
-}
-
-#toggleDark {
-    position: fixed;
-    top: 20px;
-    right: 200px;
-
-    z-index: 1000;
-
-    width: 45px;
-    height: 45px;
-
-    background: #1e293b;
-    color: white;
-
-    border: none;
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 18px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-
-    transition: 0.3s;
-}
-
-#toggleDark:hover {
-    transform: scale(1.05);
-}
-
-/* ============================================================
-   3. ESTRUTURA PRINCIPAL
+   2. ESTRUTURA PRINCIPAL
 ============================================================ */
 
 .mapa-container {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;     
+    padding: 10px;          
+    box-sizing: border-box;
 }
 
 .mapa-card {
@@ -120,7 +56,7 @@ body.dark .mapa-card {
 }
 
 /* ============================================================
-   4. CABEÇALHO
+   3. CABEÇALHO
 ============================================================ */
 
 .mapa-header h2 {
@@ -144,7 +80,7 @@ body.dark .mapa-header p {
 }
 
 /* ============================================================
-   5. LAYOUT GUIA + MAPA
+   4. LAYOUT GUIA + MAPA
 ============================================================ */
 
 .conteudo-mapa {
@@ -158,7 +94,7 @@ body.dark .mapa-header p {
 }
 
 /* ============================================================
-   6. GUIA DOS PONTOS
+   5. GUIA DOS PONTOS
 ============================================================ */
 
 .painel-pontos {
@@ -242,6 +178,7 @@ body.dark .titulo-ponto {
 .linha-info {
 
     display: flex;
+    
     align-items: flex-start;
 
     gap: 12px;
@@ -252,7 +189,7 @@ body.dark .titulo-ponto {
     width: 40px;
     height: 40px;
 
-    background: #980000;
+    background: #097420;
 
     border-radius: 50%;
 
@@ -273,7 +210,7 @@ body.dark .linha-info {
 }
 
 /* ============================================================
-   7. MAPA
+   6. MAPA
 ============================================================ */
 
 #mapa {
@@ -305,7 +242,7 @@ body.dark .linha-info {
 }
 
 /* ============================================================
-   8. DASHBOARD DE INFORMAÇÕES
+   7. DASHBOARD DE INFORMAÇÕES
 ============================================================ */
 
 .mapa-info {
@@ -323,7 +260,9 @@ body.dark .linha-info {
 
     flex: 1;
 
-    padding: 28px 20px;
+    padding: 40px 15px;
+
+    line-height: 1 !important;
 
     background: white;
 
@@ -351,12 +290,12 @@ body.dark .linha-info {
 
     color: #405138;
 
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .info-box strong {
 
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
     color: #135f13;
 }
@@ -376,78 +315,113 @@ body.dark .info-box strong {
     color: #4ade80;
 }
 
+
 /* ============================================================
-   9. RESPONSIVIDADE
+    8. ESTILOS DOS BOTÕES MODO DARK
+============================================================*/
+    #btnVoltar {
+        position: relative;
+        top: 25px;
+        right: -25px; /* Ajustado para dar espaço ao dark mode */
+        background: linear-gradient(135deg, #1b7925, #405138);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    #toggleDark {
+        position: relative;
+        top: 20px;
+        right: 20px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+/* ============================================================
+    9.RESPONSIVIDADE
 ============================================================ */
 
-@media (max-width: 1100px) {
+        @media (max-width: 900px) {
 
-    .conteudo-mapa {
+            .conteudo-mapa {
 
-        grid-template-columns: 1fr;
-    }
+                grid-template-columns: 1fr;
+            }
 
-    .painel-pontos {
+            .painel-pontos {
 
-        max-height: unset;
-    }
-}
+                max-height: unset;
+            }
 
-@media (max-width: 768px) {
+            .textoVerde {
+                line-height: 1.6 !important;
+            }
+        }  
 
-    #mapa {
-        height: 430px;
-    }
+        @media (max-width: 600px) {
 
-    .mapa-info {
+            #mapa {
 
-        flex-direction: column;
-    }
-}
+                height: 430px;
+            }
 
-@media (max-width: 575.98px) {
+            #btnVoltar {
 
-    .mapa-card {
+                width: 50px;
+                height: 50px;
 
-        width: 100%;
+                padding: 0;
 
-        padding: 18px;
-    }
+                border-radius: 50%;
 
-    .mapa-header h2 {
+                justify-content: center;
 
-        font-size: 1.4rem;
-    }
+                right: 80px;
 
-    .mapa-header p {
+                margin-top: -30px;
+            }
 
-        font-size: 0.85rem;
-    }
+            #btnVoltar .texto {
 
-    #mapa {
+                display: none;
+            }
 
-        height: 320px;
-    }
+            #btnVoltar .icone {
 
-    .titulo-ponto {
+                font-size: 20px;
+            }
 
-        font-size: 14px;
-    }
+            #toggleDark {
 
-    #btnVoltar,
-    #toggleDark {
+                right: -60px;
+                top: 4px;
+            }
 
-        position: static;
+            .titulo-ponto {
 
-        width: 90%;
+                font-size: 15px;
+            }
 
-        margin: 10px auto;
-    }
-
-    #toggleDark {
-
-        border-radius: 12px;
-
-        height: 45px;
-    }
-}
+            .textoVerde {
+                line-height: 1.6 !important;
+            }
+        }
