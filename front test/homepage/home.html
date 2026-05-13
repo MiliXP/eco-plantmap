@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantMap - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-box">PLANT MAP</div>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">Mapa</a>
+                <a href="#">Minhas Plantas</a>
+            </nav>
+            <div class="header-icons">
+                <i class="fas fa-bell"></i>
+                <div class="profile-circle"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-layout container">
+        <aside class="sidebar-left">
+            <div class="widget">
+                <h3>Filtrar por região</h3>
+                <select><option>Todas as regiões</option></select>
+                <h3>Filtrar por espécie</h3>
+                <select><option>Todas as espécies</option></select>
+            </div>
+            <div class="widget">
+                <h3>Buscar</h3>
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar usuários/plantas...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </aside>
+
+        <section class="feed">
+            <article class="post-card">
+                <div class="post-header">
+                    <div class="user-avatar"></div>
+                    <div class="user-info">
+                        <strong>Usuario_993#420</strong>
+                        <p>Hoje fico feliz em anunciar que o Ypê rosa que plantei quando era criança completou 20 anos Hoje!!</p>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ypê Rosa" class="post-image">
+                <div class="post-actions">
+                    <div class="left-actions">
+                        <i class="far fa-heart" onclick="likePost(this)"></i>
+                        <i class="far fa-comment"></i>
+                        <i class="far fa-paper-plane"></i>
+                    </div>
+                    <i class="far fa-bookmark"></i>
+                </div>
+                <div class="post-likes">
+                    <p>Neuza_59 e outras pessoas curtiram isso</p>
+                </div>
+            </article>
+        </section>
+
+        <aside class="sidebar-right">
+            <div class="widget map-preview">
+                <h3>Mapa Interativo</h3>
+                <div class="mini-map">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+            </div>
+            <div class="widget leaderboard">
+                <h3>Leaderboard</h3>
+                <ul>
+                    <li><span>1</span> Planta Top</li>
+                    <li><span>2</span> Bio Amigo</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <div class="mobile-action-bar">
+        <i class="fas fa-trophy"></i>
+        <i class="fas fa-camera"></i>
+        <div class="main-map-btn">
+            <div class="inner-circle">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </div>
+        <i class="fas fa-user"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

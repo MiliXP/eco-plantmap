@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantMap - Meu Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="custom-nav">
+        <div class="container nav-box">
+            <div class="brand-logo">Plant Map</div>
+            <nav class="nav-links">
+                <a href="index.html"><i class="fas fa-seedling"></i> Feed</a>
+                <a href="#"><i class="fas fa-map-marked-alt"></i> Mapa</a>
+                <a href="#" class="active"><i class="fas fa-user-leaf"></i> Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="plant-profile-header">
+            <div class="avatar-section">
+                <div class="avatar-organic-shape">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" alt="Avatar">
+                </div>
+                <div class="level-badge">NÍVEL 15</div>
+            </div>
+
+            <div class="info-section">
+                <div class="name-row">
+                    <h1>Pedro Henrique</h1>
+                    <span class="user-tag">@Usuario_993#420</span>
+                </div>
+                
+                <div class="plant-stats">
+                    <div class="stat-card"><b>12</b> Plantios</div>
+                    <div class="stat-card"><b>850</b> Eco-pontos</div>
+                    <div class="stat-card"><b>3</b> Troféus</div>
+                </div>
+
+                <p class="bio-text">🌿 Desenvolvedor & Plantador Urbano em Manaus. Ajudando a mapear a biodiversidade da nossa região.</p>
+                
+                <div class="action-buttons">
+                    <button class="btn-primary">Novo Plantio +</button>
+                    <button class="btn-secondary"><i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Meu Jardim Mapeado</h2>
+
+        <section class="garden-grid" id="garden-container">
+            <article class="plant-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=500&q=80" class="plant-thumb">
+                    <span class="location-float"><i class="fas fa-map-marker-alt"></i> Manaus</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ypê Rosa</h3>
+                    <p>Um marco de 20 anos na minha jornada ambiental.</p>
+                </div>
+            </article>
+
+            <article class="plant-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1466781783364-391e9e6ef21a?auto=format&fit=crop&w=500&q=80" class="plant-thumb">
+                    <span class="location-float"><i class="fas fa-map-marker-alt"></i> Aleixo</span>
+                </div>
+                <div class="card-body">
+                    <h3>Muda de Angelim</h3>
+                    <p>Crescendo forte no canteiro central.</p>
+                </div>
+            </article>
+
+            <article class="plant-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=500&q=80" class="plant-thumb">
+                    <span class="location-float"><i class="fas fa-map-marker-alt"></i> Centro</span>
+                </div>
+                <div class="card-body">
+                    <h3>Palmeira Imperial</h3>
+                    <p>Primeiro registro feito oficialmente pelo app.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

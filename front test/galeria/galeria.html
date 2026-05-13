@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantMap - Galeria de Impacto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+
+    <header class="custom-nav">
+        <div class="container nav-box">
+            <div class="brand-logo">Plant Map</div>
+            <nav class="nav-links">
+                <a href="index.html">Feed</a>
+                <a href="#" class="active">Galeria</a>
+                <a href="perfil.html">Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="gallery-intro">
+            <h1>Mural de Ações Ecológicas</h1>
+            <p>Veja como a comunidade em Manaus está transformando o mundo, um ato de cada vez. 🌎✨</p>
+        </section>
+
+        <div class="filter-bar">
+            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Plantio</button>
+            <button class="filter-btn">Limpeza</button>
+            <button class="filter-btn">Reciclagem</button>
+        </div>
+
+        <section class="gallery-grid">
+            <article class="action-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=500&q=80" alt="Recarga Elétrica">
+                    <span class="category-tag energy">Energia Limpa</span>
+                </div>
+                <div class="card-content">
+                    <h3>Ponto de Recarga</h3>
+                    <p><b>@Lucas_Eco:</b> Usei o novo ponto de recarga no Shopping em Manaus. Menos CO2 no nosso ar!</p>
+                    <span class="location"><i class="fas fa-map-marker-alt"></i> Manaus, AM</span>
+                </div>
+            </article>
+
+            <article class="action-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=500&q=80" alt="Plantio">
+                    <span class="category-tag plant">Plantio</span>
+                </div>
+                <div class="card-content">
+                    <h3>Nova Macieira</h3>
+                    <p><b>@Ana_Verde:</b> Consegui plantar uma muda de macieira no meu quintal. Esperando os frutos!</p>
+                    <span class="location"><i class="fas fa-map-marker-alt"></i> Aleixo</span>
+                </div>
+            </article>
+
+            <article class="action-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1618477461839-21019b4fc2ba?auto=format&fit=crop&w=500&q=80" alt="Limpeza de Rio">
+                    <span class="category-tag cleanup">Limpeza</span>
+                </div>
+                <div class="card-content">
+                    <h3>Rio Limpo</h3>
+                    <p><b>@Grupo_EcoAM:</b> Mutirão de hoje na beira do rio. Retiramos 50kg de plástico!</p>
+                    <span class="location"><i class="fas fa-map-marker-alt"></i> Tarumã</span>
+                </div>
+            </article>
+
+            <article class="action-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=500&q=80" alt="Reciclagem">
+                    <span class="category-tag recycle">Reciclagem</span>
+                </div>
+                <div class="card-content">
+                    <h3>Descarte Correto</h3>
+                    <p><b>@Pedro_Henrique:</b> Levando os eletrônicos velhos para o ponto de coleta seletiva.</p>
+                    <span class="location"><i class="fas fa-map-marker-alt"></i> Centro</span>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="galeria.js"></script>
+</body>
+</html>
