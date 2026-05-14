@@ -1,12 +1,12 @@
-package com.plantmap.controller;
+package com.plantmap.plantmap_backend.controller;
 
-import com.plantmap.model.PontoMapa;
-import cpm.plantmap.repository.PontoMapaRepository;
+import com.plantmap.plantmap_backend.model.PontoMapa;
+import com.plantmap.plantmap_backend.repository.PontoMapaRepository;
 
-import org.springframework.beans.factory.annotation.autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.list;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pontos")

@@ -1,16 +1,20 @@
 /* model é a pasta que representa os dados do programa, exemplo:
 Usuario, tipo (Tipo de ping), latitude, longitude, data do dia
 */
-package com.plantmap.model;
+package com.plantmap.plantmap_backend.model;
 import jakarta.persistence.*;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 //@Entity: diz ao Spring Boot que isso é uma tabela no banco de dados (BD)
 @Entity
 public class PontoMapa {
     //@Id: Chave primario
-    @id
+    @Id
     //@GeneratedValue: o banco cria o ID automaticamente
-    @GeneratedValue(strategy = GenerationType.INDENTITY)
-    private ling id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nome;
     private String tipo;
@@ -38,7 +42,7 @@ public class PontoMapa {
         return latitude;
     }
     public void setLatitude(double latitude) {
-        this.latitude = latitude
+        this.latitude = latitude;
     }
     public double  getLongitude() {
         return longitude;
