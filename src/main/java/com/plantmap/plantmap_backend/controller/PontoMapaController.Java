@@ -18,11 +18,13 @@ public class PontoMapaController{
 
     @GetMapping
     public List<PontoMapa> listar() {
+
         return repository.findAll();
     }
 
     @PostMapping
     public PontoMapa salvar (@RequestBody PontoMapa ponto) {
+
         return repository.save(ponto);
     }
 }
