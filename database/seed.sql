@@ -4,6 +4,6 @@ INSERT INTO tipos_pontos (nome) VALUES
                                     ('Coleta Seletiva'),
                                     ('Lixo Eletrônico'),
                                     ('Recarga de Carro Elétrico'),
-                                    ('Ponto de Plantio');
+                                    ('Ponto de Plantio'); 
 
 -- OBS: se precisarmos adicionar outros tipos no banco, apenas usaremos o "INSERT INTO tipos_pontos" 
