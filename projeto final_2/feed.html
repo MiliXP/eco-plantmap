@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Plant Map | Feed</title>
+
+  <link rel="stylesheet" href="CSS/feed.css">
+
+  <link 
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+</head>
+<body>
+
+  <header class="topo-feed">
+    <h1 class="logo-feed">Plant Map</h1>
+
+    <div class="barra-pesquisa">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="buscarPost" placeholder="Pesquisar">
+    </div>
+
+    <div class="acoes-topo">
+      <button id="btnTema" class="btn-tema">⏾</button>
+
+      <button class="btn-coracao" onclick="abrirCurtidos()">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+  </header>
+
+  <section class="stories">
+
+    <div class="story meu-story" onclick="abrirCameraStory()">
+      <div class="story-img">
+        <img 
+          id="imagemMeuStory"
+          src="imagens/participantes.jpeg" 
+          alt="Seu story"
+        >
+      </div>
+      <p>Seu story</p>
+    </div>
+
+
+  </section>
+
+  <main class="feed-container">
+    <div id="listaPosts">
+      <!-- POSTS APARECEM AQUI -->
+    </div>
+  </main>
+
+  <nav class="menu-inferior">
+    <a href="feed.html">
+      <i class="fa-solid fa-house"></i>
+    </a>
+
+    <a href="mapa.html">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+
+    <button class="botao-camera" onclick="abrirCamera()">
+      <i class="fa-regular fa-square-plus"></i>
+    </button>
+
+    <a href="index.html">
+      <i class="fa-solid fa-trophy"></i>
+    </a>
+
+    <a href="perfil.html">
+      <img src="imagens/participantes.jpeg" alt="Perfil">
+    </a>
+  </nav>
+
+  <!-- MODAL CAMERA POST -->
+  <div class="modal-camera" id="modalCamera">
+    <div class="camera-box">
+      <video id="videoCamera" autoplay playsinline></video>
+      <canvas id="canvasCamera"></canvas>
+      <img id="previewFoto" alt="Prévia da foto">
+
+      <div class="camera-acoes" id="acoesCamera">
+        <button onclick="tirarFoto()">Tirar foto</button>
+        <button onclick="fecharCamera()">Cancelar</button>
+      </div>
+
+      <div class="camera-acoes" id="acoesPreview">
+        <button onclick="publicarFotoCamera()">Publicar</button>
+        <button onclick="refazerFoto()">Tirar outra</button>
+        <button onclick="fecharCamera()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CAMERA STORY -->
+  <div class="modal-story" id="modalStory">
+    <div class="story-box">
+      <video id="videoStory" autoplay playsinline></video>
+      <canvas id="canvasStory"></canvas>
+      <img id="previewStory" alt="Prévia do story">
+
+      <div class="story-acoes" id="acoesStoryCamera">
+        <button onclick="tirarFotoStory()">Tirar foto</button>
+        <button onclick="fecharCameraStory()">Cancelar</button>
+      </div>
+
+      <div class="story-acoes" id="acoesStoryPreview">
+        <button onclick="publicarStory()">Publicar story</button>
+        <button onclick="refazerStory()">Tirar outra</button>
+        <button onclick="fecharCameraStory()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL VER STORY -->
+  <div class="modal-ver-story" id="modalVerStory" onclick="fecharVerStory()">
+    <img id="imagemStoryAberto" alt="Story">
+
+    <button id="btnApagarStory" onclick="apagarStory(event)">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+
+  <!-- MODAL CURTIDOS -->
+  <div class="modal-curtidos" id="modalCurtidos">
+    <div class="curtidos-box">
+      <div class="topo-curtidos">
+        <h2>Publicações curtidas</h2>
+
+        <button onclick="fecharCurtidos()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="listaCurtidos">
+        <!-- POSTS CURTIDOS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/feed.js"></script>
+
+</body>
+</html>

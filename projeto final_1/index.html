@@ -1,0 +1,215 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantMap - Ranking</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/mapa.css">
+
+    <style>
+        /* ============================================================
+           ESTILOS DOS BOTÕES (UI CONTROLS)
+        ============================================================ */
+        #btnMapa {
+            position: relative;
+            top: 25px;
+            right: -25px; /* Ajustado para dar espaço ao dark mode */
+            background: linear-gradient(135deg, #1b7925, #405138);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        #toggleDark {
+            position: relative;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        /* ============================================================
+           RESPONSIVIDADE (MOBILE)
+        ============================================================ */
+        @media (max-width: 600px) {
+            #btnMapa {
+                width: 55px;
+                height: 55px;
+                padding: 0;
+                border-radius: 50%;
+                justify-content: center;
+                top: 12px;
+                right: 70px;
+            }
+
+            #btnMapa .texto {
+                display: none;
+            }
+
+            #btnMapa::before {
+                content: "🗺️"; /* Ícone visual para o botão quando mobile */
+                font-size: 20px;
+            }
+
+            #toggleDark {
+                top: 10px;
+                right: -50px;
+            }
+        }
+    </style>
+</head>
+  
+<body>
+
+    <nav class="controles-fixos">
+        <button id="btnMapa" onclick="window.location.href='feed.html'">
+    Ir para o Feed
+</button>
+        
+    </nav>
+
+    <div class="container">
+
+        <header class="main-header">
+            <h1 class="logo">
+                <img src="imagens/LOGO.png" alt="muda" class="logo-img">
+            </h1>
+            <p class="info">Painel de Desempenho e Reflorestamento</p>
+        </header>
+
+    <section class="cards">
+    <div class="card">
+        <img src="imagens/muda.jpeg" alt="muda" class="card-bg">
+        <div class="card-content">
+            <h1>🌱 Total de Mudas</h1>
+            <p class="number">14.852</p>
+
+            <div class="chart-container">
+                <svg viewBox="0 0 500 100" preserveAspectRatio="none" class="chart-svg">
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgba(175, 223, 160, 0.3);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(255, 255, 255, 0.433);stop-opacity:0" />
+                </linearGradient>
+            </defs>
+        
+            <path d="M0,80 Q50,90 100,70 T200,60 T300,80 T400,50 T500,40 V100 H0 Z" fill="url(#grad)" />
+        
+            <path d="M0,80 Q50,90 100,70 T200,60 T300,80 T400,50 T500,40" 
+            fill="none" stroke="white" stroke-width="3" stroke-linecap="round" />
+              
+            <circle cx="496" cy="38" r="4" fill="white" />
+        </svg>
+    
+    <div class="chart-labels">
+        <span>jan</span><span>fev</span><span>mar</span><span>abr</span><span>mai</span><span>jun</span>
+    </div>
+</div>
+     
+        </div>
+    </div>
+
+    <div class="card area-reflorestada">
+        <img src="imagens/reflorestamento.jpeg" alt="reflorestamento" class="card-bg">
+        <div class="card-content">
+            <h1>🌲 Área Reflorestada</h1>
+            <p class="number-reflorestamento">1200 m²</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="imagens/participantes.jpeg" alt="participantes" class="card-bg">
+        <div class="card-content">
+            <h1>👥 Participantes</h1>
+            <p class="number">84</p>
+        </div>
+    </div>
+</section>
+</section>
+
+        <section class="ranking">
+            <div class="ranking-header">
+                <h2>🏆 Ranking de Plantio</h2>
+                <p>Os maiores contribuidores da nossa rede</p>
+            </div>
+
+            <div class="tabela-container">
+                <table id="tabela-ranking">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Nome</th>
+                            <th>Região</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1º</td>
+                            <td>Walter</td>
+                            <td>Zona Leste</td>
+                            <td class="quantidade">1.250</td>
+                        </tr>
+                        <tr>
+                            <td>2º</td>
+                            <td>Henrique</td>
+                            <td>Zona Sul</td>
+                            <td class="quantidade">985</td>
+                        </tr>
+                        <tr>
+                            <td>3º</td>
+                            <td>Lucas</td>
+                            <td>Zona Norte</td>
+                            <td class="quantidade">870</td>
+                        </tr>
+                        <tr>
+                            <td>4º</td>
+                            <td>Ana Silva</td>
+                            <td>Zona Oeste</td>
+                            <td class="quantidade">760</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="JS/script.js"></script>
+    <script>
+        // Lógica de Navegação
+        document.getElementById("btnVoltar").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+
+        // Lógica Dark Mode
+        const toggle = document.getElementById("toggleDark");
+        toggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            // Troca o ícone dependendo do modo
+            toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+        });
+    </script>
+
+</body>
+</html>

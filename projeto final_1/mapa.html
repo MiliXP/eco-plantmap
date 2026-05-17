@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMap Manaus</title>
+     
+    <!-- SEUS ARQUIVOS CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/mapa.css">
+
+    <!-- LEAFLET CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+
+<body>
+    <nav class="controles-fixos">
+        <button id="btnVoltar" title="Voltar para o Ranking">
+            <span class="icone">⬅</span>
+            <span class="texto">Ir para o Feed</span>
+        </button>
+        <button id="toggleDark" title="Alternar Modo Escuro">🌙</button>
+    </nav>
+
+    <div class="container">
+        <header class="main-header">
+            <h1><span>Eco</span>Map</h1>
+            <p>Mapa inteligente de descarte consciente em Manaus</p>
+        </header>
+
+        <main class="mapa-container">
+            <article class="mapa-card">
+                <header class="mapa-header">
+                    <h2>♻ Mapa de Reciclagem</h2>
+                    <p>Encontre pontos de coleta seletiva, descarte eletrônico e reciclagem em Manaus</p>
+                </header>
+
+                <div class="conteudo-mapa">
+                    <div class="painel-pontos">
+                        <!-- CARD AMAZONAS -->
+                        <div class="card-ponto" data-lat="-3.1022" data-lng="-60.0250" data-marker="amazonas">
+                            <div class="titulo-ponto">AMAZONAS SHOPPING</div>
+                            <div class="conteudo-ponto">
+                                <div class="linha-info">
+                                    <span class="icone-info">📍</span>
+                                    <div><strong>ENDEREÇO</strong><br>Av. Djalma Batista, 482<br>Chapada - Manaus/AM</div>
+                                </div>
+                                <div class="linha-info">
+                                    <span class="icone-info">♻</span>
+                                    <div><strong>COLETA</strong><br>Eletrônicos, pilhas e recicláveis</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD BEMOL -->
+                        <div class="card-ponto" data-lat="-3.0415" data-lng="-59.9580" data-marker="bemol">
+                            <div class="titulo-ponto">BEMOL GRANDE CIRCULAR</div>
+                            <div class="conteudo-ponto">
+                                <div class="linha-info">
+                                    <span class="icone-info">📍</span>
+                                    <div><strong>ENDEREÇO</strong><br>Av. Autaz Mirim, 6100<br>Manaus/AM</div>
+                                </div>
+                                <div class="linha-info">
+                                    <span class="icone-info">💻</span>
+                                    <div><strong>COLETA</strong><br>Celulares, teclados, mouses e eletrônicos</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD SEMULSP -->
+                        <div class="card-ponto" data-lat="-3.1038" data-lng="-60.0715" data-marker="semulsp">
+                            <div class="titulo-ponto">SEMULSP - COMPENSA</div>
+                            <div class="conteudo-ponto">
+                                <div class="linha-info">
+                                    <span class="icone-info">📍</span>
+                                    <div><strong>ENDEREÇO</strong><br>Av. Compensa, 1335<br>Compensa - Manaus/AM</div>
+                                </div>
+                                <div class="linha-info">
+                                    <span class="icone-info">🏠</span>
+                                    <div><strong>COLETA</strong><br>Linha branca e grandes volumes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mapa"></div>
+                </div>
+
+                <footer class="mapa-info">
+                    <div class="info-box"><span>♻ Pontos</span><strong>15+ Locais</strong></div>
+                    <div class="info-box"><span>📍 Cidade</span><strong>Manaus</strong></div>
+                    <div class="info-box"><span>🌎 Cobertura</span><strong>Zonas Urbanas</strong></div>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <!-- SCRIPTS NO FINAL DO BODY -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="JS/mapa.js"></script> <!-- Certifique-se que o caminho está correto -->
+</body>
+</html>

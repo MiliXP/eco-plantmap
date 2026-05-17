@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Plant Map | Meu Perfil</title>
+
+  <link rel="stylesheet" href="CSS/perfil.css">
+
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+</head>
+<body>
+
+  <main class="layout-feed">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar-menu">
+
+      <a href="feed.html" class="menu-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Página inicial</span>
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Pesquisa</span>
+      </a>
+
+      <a href="mapa.html" class="menu-item">
+        <i class="fa-regular fa-compass"></i>
+        <span>Explorar</span>
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fa-regular fa-heart"></i>
+        <span>Notificações</span>
+      </a>
+
+      <a href="#" class="menu-item" onclick="abrirCriarPost(event)">
+        <i class="fa-solid fa-plus"></i>
+        <span>Criar</span>
+      </a>
+
+      <a href="perfil.html" class="menu-item ativo perfil-link">
+        <img src="imagens/participantes.jpeg" alt="Perfil">
+        <span>Perfil</span>
+      </a>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <section class="feed-container">
+
+      <!-- PERFIL -->
+      <section class="perfil-card">
+
+        <div class="perfil-foto">
+          <img 
+            src="imagens/participantes.jpeg" 
+            alt="Foto do usuário"
+          >
+        </div>
+
+        <div class="perfil-info">
+
+          <!-- NOME DINÂMICO -->
+          <h1 id="nomePerfil">
+            Usuário
+          </h1>
+
+          <!-- USER DINÂMICO -->
+          <p class="perfil-user" id="userPerfil">
+            @usuario
+          </p>
+
+          <div class="perfil-status">
+
+            <div class="status-box">
+              <strong>12</strong>
+              <span>Plantios</span>
+            </div>
+
+            <div class="status-box">
+              <strong>850</strong>
+              <span>Eco-pontos</span>
+            </div>
+
+            <div class="status-box">
+              <strong>3</strong>
+              <span>Troféus</span>
+            </div>
+
+          </div>
+
+          <p class="perfil-bio">
+            🌿 Desenvolvedor & Plantador Urbano em Manaus.
+            Ajudando a mapear a biodiversidade da nossa região.
+          </p>
+
+          <div class="perfil-acoes">
+            <span class="nivel">
+              NÍVEL 15
+            </span>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- POSTS -->
+      <section class="grid-posts" id="listaPosts">
+        <!-- POSTS DO PERFIL APARECEM AQUI -->
+      </section>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL CRIAR POST -->
+  <div class="modal-post" id="modalPost">
+
+    <div class="modal-conteudo">
+
+      <div class="modal-topo">
+
+        <h2>Criar publicação</h2>
+
+        <button onclick="fecharCriarPost()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+      <input 
+        type="text"
+        id="nomeUsuario"
+        placeholder="Seu nome"
+      >
+
+      <input 
+        type="text"
+        id="localizacao"
+        placeholder="Local da ação"
+      >
+
+      <select id="tipoAcao">
+        <option value="Plantação">🌱 Plantação</option>
+        <option value="Coleta">🗑️ Coleta</option>
+        <option value="Reciclagem">♻️ Reciclagem</option>
+      </select>
+
+      <textarea 
+        id="descricao"
+        placeholder="Descreva a ação realizada"
+      ></textarea>
+
+      <input 
+        type="number"
+        id="quantidade"
+        placeholder="Quantidade"
+      >
+
+      <input 
+        type="file"
+        id="imagemPost"
+        accept="image/*"
+      >
+
+      <button 
+        class="btn-publicar-modal" 
+        onclick="publicarPost()"
+      >
+        Publicar
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="js/perfil.js"></script>
+
+</body>
+</html>

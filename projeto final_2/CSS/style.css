@@ -1,0 +1,509 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* ============================================================
+   0,5. TOPO
+============================================================ */
+.topo-feed{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 18px;
+    border-bottom: 1px solid #dbeafe;
+}
+
+.logo-feed{
+    font-size: 30px;
+    font-weight: bold;
+    color: #0b5c1d;
+}
+
+.barra-pesquisa{
+    flex: 1;
+    max-width: 420px;
+    margin: 0 18px;
+    background: #f1f8f4;
+    height: 45px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 12px;
+    border: 1px solid #b8d8c2;
+}
+
+.barra-pesquisa i{
+    color: #6b7280;
+}
+
+.barra-pesquisa input{
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #063b1a;
+    font-size: 15px;
+}
+
+.acoes-topo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-tema,
+.btn-coracao{
+    background: transparent;
+    border: none;
+    color: #063b1a;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* ============================================================
+   1. CONFIGURAÇÕES BASE (ROOT)
+============================================================ */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #eef8ff;
+    padding-top: 0px; /* Evita que botões fixos cubram o conteúdo */
+    transition: background 0.3s ease;
+}
+
+.container { 
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+   2. CABEÇALHO (HEADER)
+============================================================ */
+header h1 {
+    color: #135f13;
+    font-size: 2.5rem;
+}
+
+header p {
+    color: #405138;
+    margin-bottom: -5px;
+}
+
+.info {
+    font-weight: bold;
+} 
+
+.logo {
+    display: flex;
+    align-items: center; /* alinha verticalmente */
+    justify-content: center; /* centraliza tudo */
+    gap: 10px; /* espaço entre imagem e texto */
+}
+
+.logo-img {
+    width: 900px; /* ajuste como quiser */
+    margin-bottom: -250px;
+    margin-top: -300px;
+}   
+
+/* ============================================================
+   3. COMPONENTES: CARDS
+============================================================ */
+/* Container que segura todos os cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Estilo Base do Card */
+.card {
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+    height: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #609966; /* Cor de fundo base */
+    border: 1px solid #2d8435;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Imagem de Fundo */
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35; /* Menos opacidade = texto mais legível */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Conteúdo do Texto */
+.card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff; /* Garante que tudo dentro seja branco */
+}
+
+.card-content h1 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* O NUMERÃO */
+.number {
+    display: block;
+    font-size: 3rem; /* Aumentei para dar destaque */
+    color: #ffffff !important; /* Branco obrigatório para não bugar */
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.number-reflorestamento {
+    display: block;
+    font-size: 3rem; /* Aumentei para dar destaque */
+    color: #ffffff !important; /* Branco obrigatório para não bugar */
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Hover Global */
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card:hover .number {
+    transform: scale(1.1); /* O número cresce suavemente */
+}
+
+.card:hover .number-reflorestamento {
+    transform: scale(1.1); /* O número cresce suavemente */
+}
+
+/* ============================================================
+   4,5. GRAFICO MENSAL DE MUDAS
+============================================================ */
+
+.chart-container {
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+
+.chart-svg {
+    width: 100%;
+    height: 55px; /* Ajuste a altura do gráfico aqui */
+    display: block;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 0 5px;
+}
+
+.chart-labels span {
+    font-size: 1.20rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: lowercase;
+}
+
+/* Animação opcional: faz a linha "aparecer" */
+.chart-svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease forwards;
+}
+
+@keyframes draw {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ============================================================
+   4. COMPONENTES: TABELA DE RANKING
+============================================================ */
+.tabela-container{
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.ranking {
+    margin-top: 50px;
+}
+
+.ranking h2 {
+    margin-bottom: 20px;
+    margin-top: -20px;
+    color: #0b6606;
+}
+
+table {
+    
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(151, 219, 157, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #609966;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #40714e52;
+}
+
+
+/* ============================================================
+   4,5. MODO ESCURO (DARK MODE)
+============================================================ */
+
+/* Garante que o site ocupe a altura toda para o rodapé não subir */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Impede que o conteúdo "vaze" para os lados e crie rolagem horizontal */
+    overflow-x: hidden; 
+
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    width: 100%;
+    position: relative; /* Muda de fixed para relative */
+    margin-top: 50px;   /* Dá um espaço entre o ranking e a grama */
+    line-height: 0;
+    background-color: transparent; /* Garante que não cubra o seu degradê */
+}
+
+.footer {
+    width: 100%;
+    height: 100%;
+    min-height: 10px; /* Altura da grama */
+    display: block;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+/* ============================================================
+   5. CONTROLES (BOTÕES FIXOS)
+============================================================ */
+.controles-fixos {
+
+    top: 20px;
+    left: 20px;   /* Margem da esquerda */
+    right: 20px;  /* Margem da direita */
+    z-index: 1000;
+    
+    display: flex;
+    /* Esta linha empurra o primeiro botão para a esquerda 
+       e o segundo para a direita */
+    justify-content: space-between; 
+    align-items: center;
+    
+    /* Importante para não bloquear cliques em elementos que 
+       possam estar no centro da tela, "atrás" do nav */
+    pointer-events: none; 
+}
+
+/* Estilos individuais dos botões */
+.controles-fixos button {
+    pointer-events: auto; /* Devolve o clique para os botões */
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#btnMapa {
+    background-color: #609966;
+    color: white;
+}
+
+#toggleDark {
+    background: #1b4332;
+    color: white;
+    padding: 10px 14px; /* Ajuste leve para o ícone da lua */
+}
+
+.controles-fixos button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* ============================================================
+   6. MODO ESCURO (DARK MODE)
+============================================================ */
+body.dark {
+    background: #161b22;
+    color: #e2e8f0;
+}
+
+body.dark header h1 { color: #4ade80; }
+body.dark header p { color: #94a3b8; }
+
+body.dark .card {
+    background: #000431;
+    border: 1px solid #374151;
+}
+
+body.dark .number { color: #facc15; }
+
+body.dark table { background: #1e293b; }
+body.dark th { background-color: #334155; }
+body.dark tr:nth-child(even) { background-color: #1e293b; }
+body.dark tr:hover { background-color: #334155; }
+
+/* ============================================================
+   7. RESPONSIVIDADE (MEDIA QUERIES)
+============================================================ */
+
+/* CELULAR */
+@media (max-width: 575.98px) {
+    .container { margin: 30px auto; }
+    header h1 { font-size: 1.7rem; }
+    
+    .cards { flex-direction: column; }
+    
+    #btnMapa, #btnVoltar, #toggleDark {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        width: 90%;
+    }
+}
+
+/* TABLET */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .cards { flex-direction: column; gap: 15px; }
+    header h1 { font-size: 2rem; }
+}
+
+/* DESKTOP MÉDIO */
+@media (min-width: 998px) {
+    .container { max-width: 1100px; }
+    .number { font-size: 2.5rem; }
+}
+
+/* DESKTOP GRANDE */
+@media (min-width: 1200px) {
+    .container { max-width: 1200px; }
+    .card { padding: 30px; }
+    .number { font-size: 3rem; }
+}
+
+@media(max-width: 768px){
+
+            .topo-feed{
+                gap: 12px;
+            }
+
+            .logo-feed{
+                font-size: 24px;
+            }
+
+            .barra-pesquisa{
+                max-width: unset;
+            }
+
+            .feed-container{
+                padding: 0 12px;
+            }
+
+            .stories{
+                padding: 15px 12px;
+            }
+        }  
+        
+/* ============================================================
+    10. MENU INFERIOR
+============================================================ */
+.menu-inferior{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: white;
+    border-top: 1px solid #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 999;
+}
+
+.menu-inferior a{
+    color: #063b1a;
+    font-size: 26px;
+    text-decoration: none;
+}
+
+.menu-inferior img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.botao-camera{
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+body.dark .topo-feed,
+body.dark .menu-inferior{
+    background: #0f1115;
+    border-color: #1f2937;
+}
+
+body.dark .logo-feed,
+body.dark .btn-tema,
+body.dark .btn-coracao,
+body.dark .menu-inferior a{
+    color: white;
+}
+
+body.dark .barra-pesquisa,
+body.dark .post-instagram{
+    background: #161b22;
+    color: white;
+    border-color: #21262d;
+}  
