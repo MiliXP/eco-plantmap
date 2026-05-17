@@ -74,7 +74,7 @@ CREATE TABLE postagens (
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-<-------- estrutura inicial do banco plantmap
+-------- estrutura inicial do banco plantmap
 
 -- tabela de usuarios
 CREATE TABLE usuarios(
