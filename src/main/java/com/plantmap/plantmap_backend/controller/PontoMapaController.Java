@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pontos")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class PontoMapaController{
 
     @Autowired
