@@ -837,3 +837,126 @@ body.dark .caixa-resposta input{
 body.dark .respostas{
     border-left: 2px solid #374151;
 }
+
+
+
+
+/* ==========================================================================
+   ANIMAÇÃO DE ENTRADA
+   ========================================================================== */
+@keyframes abrirModal {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Container de fundo do Instagram - Forçando prioridade máxima */
+div#modalConfirmacaoInsta.modal-insta-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    
+    /* Valor extremo para passar por cima de qualquer modal anterior: */
+    z-index: 999999 !important; 
+    
+    display: none; /* Controlado pelo JS */
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* O card centralizado do Alerta */
+div#modalConfirmacaoInsta .modal-insta-conteudo {
+    background-color: #161b22 !important; /* Mantendo o dark mode padrão do seu print */
+    width: 85% !important;
+    max-width: 260px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    box-shadow: 0 4px 24px #00000080 !important;
+    animation: abrirJanelaInsta 0.2s ease-out !important;
+}
+
+/* Garante o estilo claro caso desativem o dark mode */
+body:not(.dark) div#modalConfirmacaoInsta .modal-insta-conteudo {
+    background-color: #ffffff !important;
+}
+
+/* Texto interno */
+div#modalConfirmacaoInsta .modal-insta-texto {
+    padding: 24px 16px !important;
+}
+
+div#modalConfirmacaoInsta .modal-insta-texto h3 {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #f5f5f5 !important;
+    margin: 0 !important;
+}
+
+body:not(.dark) div#modalConfirmacaoInsta .modal-insta-texto h3 {
+    color: #262626 !important;
+}
+
+/* Botões do Menu */
+div#modalConfirmacaoInsta .btn-insta-opcao {
+    background: none !important;
+    border: none !important;
+    border-top: 1px solid #21262d !important;
+    padding: 14px 0 !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    color: #f5f5f5 !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+body:not(.dark) div#modalConfirmacaoInsta .btn-insta-opcao {
+    border-top: 1px solid #dbdbdb !important;
+    color: #262626 !important;
+}
+
+/* Botão Excluir (Vemelho) */
+div#modalConfirmacaoInsta .btn-insta-opcao.perigo {
+    color: #ed4956 !important;
+    font-weight: 700 !important;
+}
+
+/* Efeito Hover/Feedback */
+div#modalConfirmacaoInsta .btn-insta-opcao:hover {
+    background-color: #101318 !important;
+}
+
+body:not(.dark) div#modalConfirmacaoInsta .btn-insta-opcao:hover {
+    background-color: #f2f2f2 !important;
+}
+
+@keyframes abrirJanelaInsta {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
+   EFEITO HOVER VERMELHO (MUDANÇA AO PASSAR O MOUSE)
+   ========================================================================== */
+
+/* Alvo direto no botão de excluir dentro das ações do comentário */
+.comentario-acoes button[onclick*="apagarComentario"] {
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+
+/* Quando o mouse passa por cima do botão de apagar */
+.comentario-acoes button[onclick*="apagarComentario"]:hover {
+    color: #ff4d4d !important; /* Fica vermelho vibrante */
+    transform: scale(1.03);    /* Dá um leve destaque de tamanho */
+}

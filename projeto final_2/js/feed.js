@@ -242,6 +242,10 @@ function abrirModalComentarios(index) {
                                         Responder
                                     </button>
 
+                                    <button onclick="apagarComentario(${index}, ${i})">
+                                        Apagar Comentario
+                                    </button>
+
                                     <span>
                                         ${comentario.curtidas || 0} curtidas
                                     </span>
@@ -322,6 +326,58 @@ function abrirModalComentarios(index) {
     `;
 
     modal.style.display = "block";
+}
+
+/* =========================
+   APAGAR COMENTÁRIO (INSTAGRAM STYLE)
+========================= */
+function apagarComentario(indexPost, indexComentario) {
+    let modalConfirmacao = document.getElementById("modalConfirmacaoInsta");
+
+    if (!modalConfirmacao) {
+        modalConfirmacao = document.createElement("div");
+        modalConfirmacao.id = "modalConfirmacaoInsta";
+        modalConfirmacao.className = "modal-insta-container";
+        document.body.appendChild(modalConfirmacao);
+    }
+
+    // Montando o HTML com as classes estruturadas exatamente vinculadas ao container
+    modalConfirmacao.innerHTML = `
+        <div class="modal-insta-conteudo">
+            <div class="modal-insta-texto">
+                <h3>Deseja apagar este comentário?</h3>
+            </div>
+            <button id="btnConfirmarExcluir" class="btn-insta-opcao perigo">Excluir</button>
+            <button id="btnCancelarExcluir" class="btn-insta-opcao">Cancelar</button>
+        </div>
+    `;
+
+    // Força a exibição como FLEX na frente de tudo usando a folha de estilo em linha
+    modalConfirmacao.style.setProperty("display", "flex", "important");
+
+    const btnExcluir = document.getElementById("btnConfirmarExcluir");
+    const btnCancelar = document.getElementById("btnCancelarExcluir");
+
+    if (btnExcluir) {
+        btnExcluir.onclick = function () {
+            posts[indexPost].comentarios.splice(indexComentario, 1);
+            salvarPosts();
+            abrirModalComentarios(indexPost);
+            carregarPosts();
+            fecharModalConfirmacaoInsta();
+        };
+    }
+
+    if (btnCancelar) {
+        btnCancelar.onclick = fecharModalConfirmacaoInsta;
+    }
+}
+
+function fecharModalConfirmacaoInsta() {
+    const modalConfirmacao = document.getElementById("modalConfirmacaoInsta");
+    if (modalConfirmacao) {
+        modalConfirmacao.style.setProperty("display", "none", "important");
+    }
 }
 
 /* =========================
