@@ -105,10 +105,6 @@ function carregarPosts() {
                         <i class="fa-regular fa-comment"></i>
                     </button>
 
-                    <button class="salvar">
-                        ♡
-                    </button>
-
                 </div>
 
                 <div class="info-post">
@@ -170,15 +166,51 @@ function toggleMenu(index) {
    APAGAR POST
 ========================= */
 function apagarPost(index) {
+    let modalConfirmacao = document.getElementById("modalConfirmacaoPost");
 
-    const confirmar = confirm("Deseja excluir esta publicação?");
+    if (!modalConfirmacao) {
+        modalConfirmacao = document.createElement("div");
+        modalConfirmacao.id = "modalConfirmacaoPost";
+        modalConfirmacao.className = "modal-insta-container";
+        document.body.appendChild(modalConfirmacao);
+    }
 
-    if (!confirmar) return;
+    // Monta o mesmo HTML estruturado da exclusão de comentários
+    modalConfirmacao.innerHTML = `
+        <div class="modal-insta-conteudo">
+            <div class="modal-insta-texto">
+                <h3>Deseja excluir esta publicação?</h3>
+            </div>
+            <button id="btnConfirmarExcluirPost" class="btn-insta-opcao perigo">Excluir</button>
+            <button id="btnCancelarExcluirPost" class="btn-insta-opcao">Cancelar</button>
+        </div>
+    `;
 
-    posts.splice(index, 1);
+    // Exibe o modal centralizado na tela
+    modalConfirmacao.style.setProperty("display", "flex", "important");
 
-    salvarPosts();
-    carregarPosts();
+    const btnExcluir = document.getElementById("btnConfirmarExcluirPost");
+    const btnCancelar = document.getElementById("btnCancelarExcluirPost");
+
+    if (btnExcluir) {
+        btnExcluir.onclick = function () {
+            posts.splice(index, 1); // Remove o post do array
+            salvarPosts();          // Salva no LocalStorage
+            carregarPosts();        // Atualiza a tela do feed
+            fecharModalConfirmacaoPost();
+        };
+    }
+
+    if (btnCancelar) {
+        btnCancelar.onclick = fecharModalConfirmacaoPost;
+    }
+}
+
+function fecharModalConfirmacaoPost() {
+    const modalConfirmacao = document.getElementById("modalConfirmacaoPost");
+    if (modalConfirmacao) {
+        modalConfirmacao.style.setProperty("display", "none", "important");
+    }
 }
 
 /* =========================

@@ -439,3 +439,251 @@ body.dark .dropdown-menu {
     font-size: 26px;
   }
 }
+
+/* ==========================================================================
+   CORREÇÃO CRUCIAL DE CAMADAS (Z-INDEX) PARA OS 3 PONTINHOS
+   ========================================================================== */
+
+/* Garante que o topo do post fique por cima do overlay de passar o mouse */
+.topo-post-perfil {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  z-index: 10; /* Fica acima do overlay-post */
+}
+
+/* O botão dos 3 pontinhos em si */
+.btn-menu {
+  background: transparent;
+  border: none;
+  color: #0b5c1d;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  position: relative;
+  z-index: 11; /* Acima de tudo no topo */
+}
+
+/* O menu dropdown que aparece */
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  min-width: 190px;
+  padding: 6px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 100; /* Garante que apareça na frente da foto e do overlay */
+  border: 1px solid #e2e8f0;
+}
+
+.dropdown-menu.ativo {
+  display: block;
+}
+
+/* Ajuste no overlay para ele não roubar o clique do topo do post */
+.overlay-post {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 1; /* Mantém ele embaixo do .topo-post-perfil */
+}
+
+/* Garante que o botão de dentro do dropdown seja clicável */
+.dropdown-menu button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #d63b3b;
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  z-index: 101;
+}
+
+.dropdown-menu button:hover {
+  background: rgba(214,59,59,0.08);
+}
+
+/* Cor do botão dos 3 pontinhos no modo escuro */
+body.dark .btn-menu {
+  color: white;
+}
+body.dark .dropdown-menu {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+/* Correções e Ajustes no Dropdown */
+.menu-post {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  min-width: 190px;
+  padding: 6px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  display: none;
+  z-index: 100; /* Garante que fique acima do overlay do post */
+  border: 1px solid #e2e8f0;
+}
+
+.dropdown-menu.ativo {
+  display: block;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #d63b3b;
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.dropdown-menu button:hover {
+  background: rgba(214,59,59,0.08);
+}
+
+/* JANELA / MODAL DE APAGAR CUSTOMIZADO */
+.modal-excluir {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease-in-out;
+  z-index: 10000;
+}
+
+.modal-excluir.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-excluir-conteudo {
+  background: #ffffff;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: scale(0.9);
+  transition: 0.25s ease-in-out;
+}
+
+.modal-excluir.ativo .modal-excluir-conteudo {
+  transform: scale(1);
+}
+
+.modal-excluir-conteudo h3 {
+  font-size: 20px;
+  color: #1f3d2b;
+  margin-bottom: 10px;
+}
+
+.modal-excluir-conteudo p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Botões do Modal de Confirmação */
+.modal-excluir-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-excluir-botoes button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.btn-confirmar-excluir {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-confirmar-excluir:hover {
+  background: #dc2626;
+}
+
+.btn-cancelar-excluir {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.btn-cancelar-excluir:hover {
+  background: #e2e8f0;
+}
+
+/* SUPORTE COMPLETO AO DARK MODE */
+body.dark .dropdown-menu {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+body.dark .modal-excluir-conteudo {
+  background: #111827;
+  color: white;
+}
+
+body.dark .modal-excluir-conteudo h3 {
+  color: white;
+}
+
+body.dark .modal-excluir-conteudo p {
+  color: #9ca3af;
+}
+
+body.dark .btn-cancelar-excluir {
+  background: #1f2937;
+  color: #9ca3af;
+}
+
+body.dark .btn-cancelar-excluir:hover {
+  background: #374151;
+}

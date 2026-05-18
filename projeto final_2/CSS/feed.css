@@ -960,3 +960,203 @@ body:not(.dark) div#modalConfirmacaoInsta .btn-insta-opcao:hover {
     color: #ff4d4d !important; /* Fica vermelho vibrante */
     transform: scale(1.03);    /* Dá um leve destaque de tamanho */
 }
+
+/* ==========================================================================
+   MODAL DE CONFIRMAÇÃO (POSTS & COMENTÁRIOS)
+   ========================================================================== */
+
+/* Container de fundo que cobre toda a tela */
+.modal-insta-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escurecido */
+    display: none; /* Controlado pelo JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Fica acima de tudo, inclusive do menu inferior e do topo */
+    padding: 20px;
+}
+
+/* O card flutuante centralizado */
+.modal-insta-conteudo {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 320px; /* Tamanho ideal padrão de caixas de diálogo mobile */
+    border-radius: 16px;
+    overflow: hidden;
+    animation: surgirModal 0.2s ease-out; /* Efeito suave ao abrir */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Área do texto de aviso */
+.modal-insta-texto {
+    padding: 32px 24px 24px 24px;
+    text-align: center;
+}
+
+.modal-insta-texto h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    line-height: 1.4;
+}
+
+/* Botões de opção (Excluir / Cancelar) */
+.btn-insta-opcao {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-top: 1px solid #dbdbdb; /* Linha divisória fina */
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.1s ease;
+}
+
+.btn-insta-opcao:active {
+    background-color: #f5f5f5; /* Efeito de clique do dedo */
+}
+
+/* Destaque vermelho para o botão de exclusão perigosa */
+.btn-insta-opcao.perigo {
+    color: #ed4956;
+    font-weight: 700; /* Texto em negrito para exclusão */
+}
+
+/* Suporte ao Modo Escuro (Dark Mode) */
+body.dark .modal-insta-conteudo {
+    background-color: #101318;
+}
+
+body.dark .modal-insta-texto h3 {
+    color: #f5f5f5;
+}
+
+body.dark .btn-insta-opcao {
+    border-top: 1px solid #21262d;
+    color: #ffffff;
+}
+
+body.dark .btn-insta-opcao.perigo {
+    color: #ed4956;
+}
+
+body.dark .btn-insta-opcao:active {
+    background-color: #363636;
+}
+
+/* Animação simples de escala para ficar suave */
+@keyframes surgirModal {
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   JANELA DE CURTIDAS
+   ========================================================================== */
+/* Janela/Modal Geral de Curtidos */
+#modalCurtidos.modal-curtidos.ativo {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escurecido suave */
+    z-index: 1000;
+}
+
+/* O Box interno (substituindo o comportamento atual do seu print) */
+.curtidos-box {
+    background-color: #161b22 !important; /* Tema Dark do PlantMap */
+    width: 90%;
+    max-width: 450px; /* Tamanho bem aproximado de um modal padrão */
+    max-height: 85vh;
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid #21262d;
+    
+    /* Remove a rolagem horizontal chata e deixa a vertical limpa */
+    overflow-x: hidden !important; 
+    overflow-y: auto !important; 
+}
+
+/* Cabeçalho (Onde fica o título "Publicações curtidas" e o "X") */
+.topo-curtidos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 10px;
+    color: #e2e8f0;
+}
+
+/* Lista de posts curtidos */
+#listaCurtidos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* O card do post individual */
+.post-curtido {
+    width: 100% !important;
+    background-color: #0f1115; /* Fundo interno do post */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #1f262d;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Ajuste da imagem para NÃO estourar o modal de jeito nenhum */
+.post-curtido img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 350px; /* Evita que uma foto vertical gigante quebre o layout */
+    object-fit: cover;
+    display: block;
+}
+
+/* Seção de texto abaixo da foto (Ex: Miliane...) */
+.info-curtido {
+    padding: 12px;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    background-color: #0f1115;
+}
+
+/* Deixar a barra de rolagem fina e discreta no padrão dark */
+.curtidos-box::-webkit-scrollbar {
+    width: 6px;
+}
+.curtidos-box::-webkit-scrollbar-track {
+    background: #161b22;
+}
+.curtidos-box::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 10px;
+}
